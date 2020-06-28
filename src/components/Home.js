@@ -1,27 +1,28 @@
-import React from 'react';
+import React from "react";
+import { Container, NewsImage, NewsCard } from "../styles/Theme";
 
 class Home extends React.Component {
-    render() {
-        return (
-            <div className="row">
-                {this.props.homeNews.map((article, index) => {
-                    return (
-                        <div key={index} className="column">
-                            <div className="card">
-                                <div className="card-body">
-                                    <img src={article.urlToImage} className="card-img-top" alt="newsImage" />
-                                    <h3 className="card-title">{article.title}</h3>
-                                    <h4>By {article.author}</h4>
-                                    <p>{article.content}</p>
-                                    <a href={article.url} target="_blank" rel="noopener noreferrer">Read More..</a>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                })}
+  render() {
+    return (
+      <Container className='row'>
+        {this.props.homeNews.map((article, index) => {
+          return (
+            <div key={index} className='col col-sm-12 col-md-6'>
+              <NewsCard>
+                <NewsImage src={article.urlToImage} alt='newsImage' />
+                <h3>{article.title}</h3>
+                <h4>By {article.author}</h4>
+                <p>{article.content}</p>
+                <a href={article.url} target='_blank' rel='noopener noreferrer'>
+                  Read More..
+                </a>
+              </NewsCard>
             </div>
-        )
-    }
+          );
+        })}
+      </Container>
+    );
+  }
 }
 
 export default Home;

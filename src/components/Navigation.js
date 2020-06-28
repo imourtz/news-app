@@ -24,6 +24,9 @@ const Navbar = styled.div`
 
 const NavLinks = styled(Link)`
   text-decoration: none;
+  :hover {
+    text-decoration: none;
+  }
   margin: 0 1rem;
   color: #000;
   ${(props) =>
@@ -35,6 +38,9 @@ const NavLinks = styled(Link)`
 
 const Logo = styled(Link)`
   font-family: "Permanent Marker", cursive;
+  :hover {
+    text-decoration: none;
+  }
   font-size: 20px;
   color: #000;
   text-decoration: none;
@@ -48,7 +54,6 @@ const SearchInput = styled.input`
   border-bottom: 1px solid #c0c0c0;
   outline: none;
   border-radius: 5%;
-  padding: 0.4rem;
   margin-left: 1rem;
 `;
 
@@ -65,10 +70,10 @@ const Search = styled.div`
 export const Navigation = ({ handlesubmit, filterPosts }) => {
   const location = useLocation();
   return (
-    <ul className='navbar-nav mr-auto'>
+    <ul>
       <Navbar>
         <div>
-          <li className='navbar-item logo active'>
+          <li>
             <Logo to='/'>
               <span>TOP</span>
               <img src='/upArrow.svg' alt='arrow' />
@@ -76,10 +81,9 @@ export const Navigation = ({ handlesubmit, filterPosts }) => {
             </Logo>
           </li>
           <NavLinks to='/search'>
-            <form className='form-inline mt-2 mt-md-0' onSubmit={handlesubmit}>
+            <form onSubmit={handlesubmit}>
               <Search>
                 <SearchInput
-                  className='form-control mr-sm-2'
                   type='text'
                   onChange={filterPosts}
                   placeholder='Search'
